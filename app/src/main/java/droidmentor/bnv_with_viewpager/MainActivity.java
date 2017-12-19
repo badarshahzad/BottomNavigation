@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         //Initializing the bottomNavigationView
-        bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -65,16 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                if (prevMenuItem != null) {
-                    prevMenuItem.setChecked(false);
-                }
-                else
-                {
-                    bottomNavigationView.getMenu().getItem(0).setChecked(false);
-                }
-                Log.d("page", "onPageSelected: "+position);
+
                 bottomNavigationView.getMenu().getItem(position).setChecked(true);
-                prevMenuItem = bottomNavigationView.getMenu().getItem(position);
 
             }
 
@@ -84,30 +76,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-       /*  //Disable ViewPager Swipe
-
-       viewPager.setOnTouchListener(new View.OnTouchListener()
-        {
-            @Override
-            public boolean onTouch(View v, MotionEvent event)
-            {
-                return true;
-            }
-        });
-
-        */
-
         setupViewPager(viewPager);
     }
 
     private void setupViewPager(ViewPager viewPager) {
+
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        callsFragment=new CallsFragment();
-        chatFragment=new ChatFragment();
-        contactsFragment=new ContactsFragment();
+
+        callsFragment = new CallsFragment();
+        chatFragment = new ChatFragment();
+        contactsFragment = new ContactsFragment();
+
         adapter.addFragment(callsFragment);
         adapter.addFragment(chatFragment);
         adapter.addFragment(contactsFragment);
+
         viewPager.setAdapter(adapter);
     }
 }
