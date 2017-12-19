@@ -21,16 +21,9 @@ For connecting BottomNavigationView with ViewPager, you need to follow thesestep
 <pre>
 @Override
     public void onPageSelected(int position) {
-        if (prevMenuItem != null) {
-            prevMenuItem.setChecked(false);
-        }
-        else
-        {
-            bottomNavigationView.getMenu().getItem(0).setChecked(false);
-        }
-       
+ 
         bottomNavigationView.getMenu().getItem(position).setChecked(true);
-        prevMenuItem = bottomNavigationView.getMenu().getItem(position);
+       
     }
  </pre>
 
